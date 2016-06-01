@@ -12,7 +12,6 @@
         android:layout_height="match_parent"
         android:paddingStart="0dp"
         android:paddingEnd="5dp"
-        android:src="@drawable/ten"
         android:scaleType="fitXY" />
 
 </LinearLayout>
