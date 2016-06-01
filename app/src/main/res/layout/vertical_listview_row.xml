@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_relative_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <it.sephiroth.android.library.widget.HListView
+        android:id="@+id/hListView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+         />
+
+    <com.example.deepakdhiman.firsttask01.VerticalTextView
+        android:id="@+id/txtCompletedItem"
+        android:layout_height="match_parent"
+        android:layout_width="30dp"
+        android:maxLines="1"
+        android:layout_alignParentStart="true"
+        android:background="#07000000"
+        android:textColor="@android:color/white"
+        android:gravity="bottom"
+        android:text="TextView"
+        android:layout_alignParentEnd="false"
+        android:minLines="1"
+        android:paddingLeft="45dp"
+        android:paddingRight="45dp" />
+
+
+</RelativeLayout>
