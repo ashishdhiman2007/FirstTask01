@@ -14,17 +14,16 @@ import android.widget.ImageView;
  */
 public class HorizontalListViewAdapter extends BaseAdapter {
 
-    static Context context;
+    Context context;
     LayoutInflater inflater;
     int listPosition;
 
 
-    public HorizontalListViewAdapter(Context Context, int listposition)
+    public HorizontalListViewAdapter(Context context, int listPosition)
     {
-        context = Context;
-        this.listPosition = listposition;
-        inflater = (LayoutInflater) context
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.context = context;
+        this.listPosition = listPosition;
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
 
@@ -35,51 +34,32 @@ public class HorizontalListViewAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-// TODO Auto-generated method stub
         return MainActivity.image_array.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-// TODO Auto-generated method stub
         return position;
-    }
-
-    public static class ViewHolder {
-        ImageView imgIndicator,image;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
         View rowView = convertView;
-        ViewHolder holder = null;
-
-        if (rowView == null)
-        {
-            holder = new ViewHolder();
-            rowView = inflater.inflate(R.layout.horizontal_listview_row,
-                    parent, false);
-            holder.imgIndicator=(ImageView)rowView.findViewById(R.id.imageView);
-            rowView.setTag(holder);
-        }
-        else
-        {
-            holder=(ViewHolder)rowView.getTag();
-        }
-
-        holder.imgIndicator.setImageBitmap(decodeFile(MainActivity.image_array.get(position)));
-
+        rowView = inflater.inflate(R.layout.horizontal_listview_row,parent, false);
+        ImageView imageView;
+        imageView =(ImageView)rowView.findViewById(R.id.imageView);
+        imageView.setImageBitmap(decodeFile(MainActivity.image_array.get(position)));
         return rowView;
 
     }
     public Bitmap decodeFile(int resId) {
         try {
-// decode image size
+            // decode image size
             BitmapFactory.Options o = new BitmapFactory.Options();
             o.inJustDecodeBounds = true;
             BitmapFactory.decodeResource(context.getResources(), resId, o);
-// Find the correct scale value. It should be the power of 2.
+            // Find the correct scale value. It should be the power of 2.
             final int REQUIRED_SIZE = 70;
             int width_tmp = o.outWidth, height_tmp = o.outHeight;
             int scale = 1;
@@ -92,11 +72,12 @@ public class HorizontalListViewAdapter extends BaseAdapter {
                 scale++;
             }
 
-// decode with inSampleSize
+            // decode with inSampleSize
             BitmapFactory.Options o2 = new BitmapFactory.Options();
             o2.inSampleSize = scale;
             return BitmapFactory.decodeResource(context.getResources(), resId, o2);
         } catch (Exception e) {
+
         }
         return null;
     }

@@ -53,7 +53,7 @@ public class VerticalListViewAdapter extends BaseAdapter{
         HListView horizontalListview;
         horizontalListview = (HListView) rowView.findViewById(R.id.hListView1);
 
-
+        //Setting Horizontal listview and its adapter (for each row)
         HorizontalListViewAdapter horizontalListViewAdapter = new HorizontalListViewAdapter(context,listPosition);
         horizontalListview.setAdapter(horizontalListViewAdapter);
         return rowView;
